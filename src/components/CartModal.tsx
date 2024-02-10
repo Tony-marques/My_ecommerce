@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import {
+   CartSliceInterface,
    addToCart,
    calculateTotalPrice,
    removeToCart,
@@ -12,10 +13,9 @@ import { useEffect } from "react";
 
 export default function CartModal() {
    const dispatch = useDispatch();
-   const { cart, totalPrice } = useSelector((state) => state.cart);
-
-   console.log(cart);
-   
+   const { cart, totalPrice } = useSelector(
+      (state: CartSliceInterface) => state.cart
+   );
 
    useEffect(() => {
       dispatch(calculateTotalPrice());
@@ -49,9 +49,9 @@ export default function CartModal() {
                         <p className="price">{price} €</p>
                      </div>
                      <div className="buttons-group">
-                        <Button onClick={() => handleDelete({ id })}>-</Button>
+                        <Button onClick={() => handleDelete(id)}>-</Button>
                         <p>{quantity}</p>
-                        <Button onClick={() => handleAdd({ id })}>+</Button>
+                        <Button onClick={() => handleAdd(id)}>+</Button>
                      </div>
                   </div>
                );

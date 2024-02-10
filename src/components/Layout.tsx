@@ -12,6 +12,8 @@ export default function Layout() {
 }
 
 const LayoutStyled = styled.div`
+   position: relative;
+
    display: flex;
    flex-direction: column;
    gap: 10px;

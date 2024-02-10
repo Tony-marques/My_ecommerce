@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Button from "./reusable-ui/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../store/slices/Cart.slice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import Button from "../../../../components/reusable-ui/Button";
+import { addToCart } from "../../../../store/slices/Cart.slice";
 
 interface ProductProps {
    id: number;
@@ -10,6 +11,7 @@ interface ProductProps {
    price: number;
    description: string;
    quantity: number;
+   category: string;
 }
 
 export default function Product({
@@ -19,9 +21,10 @@ export default function Product({
    price,
    description,
    quantity,
+   category,
 }: ProductProps) {
    const dispatch = useDispatch();
-   const { cart } = useSelector((state) => state.cart);
+   // const { cart } = useSelector((state: AppState) => state.cart);
 
    const handleOnClick = () => {
       const newProductToCart = {
@@ -31,6 +34,7 @@ export default function Product({
          price,
          description,
          quantity,
+         category,
       };
       dispatch(addToCart(newProductToCart));
    };
@@ -45,7 +49,7 @@ export default function Product({
          <div className="buttons-group">
             <Button onClick={handleOnClick}>Ajouter au panier</Button>
             <Button $size="withoutSpacing">
-               <a href={`/produit/${id}`}>Voir le produit</a>
+               <Link to={`/produit/${id}`}>Voir le produit</Link>
             </Button>
          </div>
       </ProductStyled>

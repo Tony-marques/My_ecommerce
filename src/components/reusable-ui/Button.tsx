@@ -41,6 +41,12 @@ const primary = css`
       border-color: #242424;
       color: #242424;
    }
+
+   a {
+      display: flex;
+      padding: 0.75rem 1.25rem;
+      color: white;
+   }
 `;
 
 const variants: { [key: string]: ReturnType<typeof css> } = {

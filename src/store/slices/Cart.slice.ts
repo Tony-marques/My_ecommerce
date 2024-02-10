@@ -2,6 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getLocalStorage, saveToLocalStorage } from "../../utils/localStorage";
 import { ProductInterface } from "../../interfaces/products";
 
+export interface CartSliceInterface {
+   cart: {
+      cart: ProductInterface[];
+      isOpen: boolean;
+      totalPrice: number;
+      totalProduct: number;
+   }
+}
+
 export const CartSlice = createSlice({
    name: "product",
    initialState: {
